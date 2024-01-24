@@ -55,6 +55,7 @@ const AddFriendForm = ({ onShowAddFriend, onAddFriend }: Props): JSX.Element => 
         return (
                 <form className="form-add-friend" onSubmit={handleSubmit}>
                         <label htmlFor="name">👬Name</label>
+
                         <input
                                 id="name"
                                 name="name"
@@ -65,6 +66,7 @@ const AddFriendForm = ({ onShowAddFriend, onAddFriend }: Props): JSX.Element => 
                         />
 
                         <label htmlFor="image-url">🌆Image URL</label>
+
                         <input
                                 id="image"
                                 name="image"
