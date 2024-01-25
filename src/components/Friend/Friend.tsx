@@ -1,40 +1,37 @@
-import { useState } from 'react';
 import { IFriend } from '../../types/types';
 import Button from '../Button/Button';
 
 interface Props {
         friend: IFriend;
+        selectedFriend?: IFriend | null;
+        onSelection: (friend: IFriend | null) => void;
 }
 
-const Friend = ({ friend: { id, name, image, balance } }: Props): JSX.Element => {
-        const [friendSelected, setFriendSelected] = useState<boolean | null>(false);
-
-        const handleFriendSelected = () => {
-                setFriendSelected((prevState) => !prevState);
-        };
+const Friend = ({ friend, selectedFriend, onSelection }: Props): JSX.Element => {
+        const isSelected: boolean = selectedFriend?.id === friend.id;
 
         return (
-                <li className={friendSelected ? 'selected' : ''}>
-                        <img src={image} alt={name} />
+                <li className={isSelected ? 'selected' : ''}>
+                        <img src={friend.image} alt={friend.name} />
 
-                        <h3>{name}</h3>
+                        <h3>{friend.name}</h3>
 
-                        {balance < 0 && (
-                                <p className={balance < 0 ? 'red' : ''}>
-                                        You owe {name} {Math.abs(balance)}$
+                        {friend.balance < 0 && (
+                                <p className={friend.balance < 0 ? 'red' : ''}>
+                                        You owe {friend.name} {Math.abs(friend.balance)}$
                                 </p>
                         )}
 
-                        {balance > 0 && (
-                                <p className={balance > 0 ? 'green' : ''}>
-                                        {name} owes You {balance}$
+                        {friend.balance > 0 && (
+                                <p className={friend.balance > 0 ? 'green' : ''}>
+                                        {friend.name} owes You {friend.balance}$
                                 </p>
                         )}
 
-                        {balance === 0 && <p>You & {name} are even</p>}
+                        {friend.balance === 0 && <p>You & {friend.name} are even</p>}
 
-                        <Button onClick={handleFriendSelected} type="button">
-                                {friendSelected ? 'Close' : 'Select'}
+                        <Button onClick={() => onSelection(friend)} type="button">
+                                {isSelected ? 'Close' : 'Select'}
                         </Button>
                 </li>
         );
