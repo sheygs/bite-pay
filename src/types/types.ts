@@ -4,3 +4,9 @@ export type IFriend = {
         image: string;
         balance: number;
 };
+
+export type ISplitBillForm = {
+        bill: number | string;
+        expense: number | string;
+        payer: string;
+};

@@ -1,13 +1,14 @@
 import { FormEvent, SetStateAction, useState } from 'react';
-import { IFriend } from '../../types/types';
+import { IFriend, ISplitBillForm } from '../../types/types';
 import Button from '../Button/Button';
 
 interface Props {
         selectedFriend: IFriend | null;
         onSelection: (friend: IFriend | null) => void;
+        onSplitBillForm: (amount: number) => void;
 }
 
-const SplitBillForm = ({ selectedFriend, onSelection }: Props): JSX.Element => {
+const SplitBillForm = ({ selectedFriend, onSelection, onSplitBillForm }: Props): JSX.Element => {
         const [bill, setBill] = useState<string | number>('');
         const [expense, setExpense] = useState<string | number>('');
         const [payer, setPayer] = useState<string>('me');
@@ -23,7 +24,15 @@ const SplitBillForm = ({ selectedFriend, onSelection }: Props): JSX.Element => {
 
                 if (!bill || !expense) return;
 
-                console.log({ bill, expense, friendExpense, payer });
+                const splitBillForm: ISplitBillForm = {
+                        bill,
+                        expense,
+                        payer,
+                };
+
+                console.log(splitBillForm);
+
+                onSplitBillForm(payer === 'me' ? friendExpense : -expense);
 
                 setBill('');
                 setExpense('');
