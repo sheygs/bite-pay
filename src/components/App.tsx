@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FriendList from './FriendList/FriendList';
 import AddFriendForm from './AddFriendForm/AddFriendForm';
-import FormSplitBill from './FormSplitBill/FormSplitBill';
+import SplitBillForm from './SplitBillForm/SplitBillForm';
 import { IFriend } from '../types/types';
 import { friends as sampleFriends } from '../constants/friends';
 import Button from './Button/Button';
@@ -46,7 +46,12 @@ function App() {
                                         {showAddFriend ? 'Close' : 'Add Friend'}
                                 </Button>
                         </div>
-                        <FormSplitBill />
+                        {selectedFriend && (
+                                <SplitBillForm
+                                        selectedFriend={selectedFriend}
+                                        onSelection={setSelectedFriend}
+                                />
+                        )}
                 </div>
         );
 }
