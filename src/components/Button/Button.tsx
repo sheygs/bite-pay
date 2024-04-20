@@ -6,12 +6,8 @@ interface Props {
         onClick?: () => void;
 }
 
-const Button = ({ children, type, onClick }: Props): JSX.Element => {
-        return (
-                <button className="button" onClick={onClick} type={type}>
-                        {children}
-                </button>
-        );
-};
-
-export default Button;
+export const Button = ({ children, type, onClick }: Props): JSX.Element => (
+        <button className="button" onClick={onClick} type={type}>
+                {children}
+        </button>
+);

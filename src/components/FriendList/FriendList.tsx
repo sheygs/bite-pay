@@ -1,5 +1,5 @@
-import Friend from '../Friend/Friend';
-import { IFriend } from '../../types/types';
+import { Friend } from '../Friend/Friend';
+import { IFriend } from '../../types';
 
 interface Props {
         friends: IFriend[];
@@ -7,7 +7,11 @@ interface Props {
         onSelection: (friend: IFriend | null) => void;
 }
 
-const FriendList = ({ friends, selectedFriend, onSelection }: Props): JSX.Element => {
+export const FriendList = ({
+        friends,
+        selectedFriend,
+        onSelection,
+}: Props): JSX.Element => {
         return (
                 <ul>
                         {friends.map((friend: IFriend) => (
@@ -21,5 +25,3 @@ const FriendList = ({ friends, selectedFriend, onSelection }: Props): JSX.Elemen
                 </ul>
         );
 };
-
-export default FriendList;
