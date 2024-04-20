@@ -1,5 +1,5 @@
 import { IFriend } from '../../types/types';
-import Button from '../Button/Button';
+import { Button } from '../Button/Button';
 
 interface Props {
         friend: IFriend;
@@ -7,7 +7,7 @@ interface Props {
         onSelection: (friend: IFriend | null) => void;
 }
 
-const Friend = ({ friend, selectedFriend, onSelection }: Props): JSX.Element => {
+export const Friend = ({ friend, selectedFriend, onSelection }: Props): JSX.Element => {
         const isSelected: boolean = selectedFriend?.id === friend.id;
 
         return (
@@ -36,5 +36,3 @@ const Friend = ({ friend, selectedFriend, onSelection }: Props): JSX.Element => 
                 </li>
         );
 };
-
-export default Friend;

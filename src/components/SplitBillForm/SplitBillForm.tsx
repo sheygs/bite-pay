@@ -1,6 +1,6 @@
 import { FormEvent, SetStateAction, useState } from 'react';
-import { IFriend, ISplitBillForm } from '../../types/types';
-import Button from '../Button/Button';
+import { IFriend, ISplitBillForm } from '../../types';
+import { Button } from '../Button/Button';
 
 interface Props {
         selectedFriend: IFriend | null;
@@ -8,7 +8,11 @@ interface Props {
         onSplitBillForm: (amount: number) => void;
 }
 
-const SplitBillForm = ({ selectedFriend, onSelection, onSplitBillForm }: Props): JSX.Element => {
+export const SplitBillForm = ({
+        selectedFriend,
+        onSelection,
+        onSplitBillForm,
+}: Props): JSX.Element => {
         const [bill, setBill] = useState<string | number>('');
         const [expense, setExpense] = useState<string | number>('');
         const [payer, setPayer] = useState<string>('me');
@@ -72,7 +76,9 @@ const SplitBillForm = ({ selectedFriend, onSelection, onSplitBillForm }: Props):
                                 }
                         />
 
-                        <label htmlFor="friend expense">👬 {selectedFriend?.name}'s expense</label>
+                        <label htmlFor="friend expense">
+                                👬 {selectedFriend?.name}'s expense
+                        </label>
                         <input
                                 id="friend expense"
                                 name="expense"
@@ -82,14 +88,19 @@ const SplitBillForm = ({ selectedFriend, onSelection, onSplitBillForm }: Props):
                         />
 
                         <label htmlFor="payer">🤑Who is paying the bill</label>
-                        <select id="payer" name="payer" value={payer} onChange={handlePayerChange}>
+                        <select
+                                id="payer"
+                                name="payer"
+                                value={payer}
+                                onChange={handlePayerChange}
+                        >
                                 <option value="me">You</option>
-                                <option value={selectedFriend?.name}>{selectedFriend?.name}</option>
+                                <option value={selectedFriend?.name}>
+                                        {selectedFriend?.name}
+                                </option>
                         </select>
 
                         <Button type="submit">Split bill</Button>
                 </form>
         );
 };
-
-export default SplitBillForm;

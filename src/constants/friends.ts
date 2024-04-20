@@ -1,4 +1,4 @@
-import { IFriend } from '../types/types';
+import { IFriend } from '../types';
 
 export const friends: IFriend[] = [
         {

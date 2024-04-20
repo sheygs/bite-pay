@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
-import { IFriend } from '../../types/types';
-import Button from '../Button/Button';
+import { IFriend } from '../../types';
+import { Button } from '../Button/Button';
 
 interface Props {
         onShowAddFriend: () => void;
@@ -12,7 +12,7 @@ interface FriendDetail {
         image: string;
 }
 
-const AddFriendForm = ({ onShowAddFriend, onAddFriend }: Props): JSX.Element => {
+export const AddFriendForm = ({ onShowAddFriend, onAddFriend }: Props): JSX.Element => {
         const [friendDetail, setFriendDetail] = useState<FriendDetail>({
                 name: '',
                 image: 'https://i.pravatar.cc/42',
@@ -80,5 +80,3 @@ const AddFriendForm = ({ onShowAddFriend, onAddFriend }: Props): JSX.Element => 
                 </form>
         );
 };
-
-export default AddFriendForm;

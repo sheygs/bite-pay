@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import FriendList from './FriendList/FriendList';
-import AddFriendForm from './AddFriendForm/AddFriendForm';
-import SplitBillForm from './SplitBillForm/SplitBillForm';
-import { IFriend } from '../types/types';
-import { friends as sampleFriends } from '../constants/friends';
-import Button from './Button/Button';
+import { FriendList } from './FriendList';
+import { AddFriendForm } from './AddFriendForm';
+import { SplitBillForm } from './SplitBillForm';
+import { IFriend } from '../types';
+import { friends as sampleFriends } from '../constants';
+import { Button } from './Button';
 
-function App() {
+export function App(): JSX.Element {
         const [showAddFriend, setShowAddFriend] = useState<boolean>(false);
         const [friends, setFriends] = useState<IFriend[]>(sampleFriends);
         const [selectedFriend, setSelectedFriend] = useState<IFriend | null>(null);
@@ -66,5 +66,3 @@ function App() {
                 </div>
         );
 }
-
-export default App;
